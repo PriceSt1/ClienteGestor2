@@ -28,7 +28,7 @@ public class vistaLoginController implements Initializable {
 
     LoginClienteDAO loginClienteDAO = new LoginClienteDAO();
     personalScene ps;
-    private int UserID;
+    private static int UserID;
 
 
 

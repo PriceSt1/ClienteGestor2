@@ -39,9 +39,8 @@ public class PedidosDAO implements InterfaceDAO<Pedidos> {
         List<Pedidos> listaPedidos = new ArrayList<>();
         vistaLoginController vlc = new vistaLoginController();
 
-        String sql = "SELECT CodigoPedido,FechaPedido,FechaEsperada,FechaEntrega,Estado,CodigoProducto,Cantidad,Costo del pedido FROM pedidosClientes WHERE CodigoCliente = ?";
+        String sql = "SELECT CodigoPedido, FechaPedido, FechaEsperada, FechaEntrega,Estado,CodigoProducto,Cantidad,CostoTotal FROM pedidosClientes WHERE CodigoCliente = ?";
         PreparedStatement ps = null;
-
         ps = this.cn.prepareStatement(sql);
         ps.setInt(1,vlc.getUserID());
         ResultSet rs = ps.executeQuery();
@@ -54,11 +53,11 @@ public class PedidosDAO implements InterfaceDAO<Pedidos> {
             pedidos.setEstado(rs.getString("Estado"));
             pedidos.setCodigoProducto(rs.getString("CodigoProducto"));
             pedidos.setCantidad(rs.getInt("Cantidad"));
-            pedidos.setCostoTotal(rs.getFloat("Costo del pedido"));
+            pedidos.setCostoTotal(rs.getFloat("CostoTotal"));
             listaPedidos.add(pedidos);
         }
 
-        return null;
+        return listaPedidos;
     }
 
     @Override

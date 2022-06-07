@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class LoginClienteDAO implements InterfaceDAO<LoginCliente> {
-    private Connection cn;
+    private final Connection cn;
 
 
     public LoginClienteDAO() {
@@ -51,7 +51,6 @@ public class LoginClienteDAO implements InterfaceDAO<LoginCliente> {
                 Pass = rs.getString("Pass");
                 rs.close();
                 return Pass;
-            }else {
             }
 
 
@@ -63,7 +62,7 @@ public class LoginClienteDAO implements InterfaceDAO<LoginCliente> {
     }
 
     @Override
-    public Integer findID(String user) throws Exception {
+    public Integer findID(String user) {
         int Id;
 
         String sql = "SELECT CodigoCliente FROM clientelogin WHERE User = ?;";
@@ -77,7 +76,6 @@ public class LoginClienteDAO implements InterfaceDAO<LoginCliente> {
                 Id = rs.getInt("CodigoCliente");
                 rs.close();
                 return Id;
-            }else {
             }
 
 
